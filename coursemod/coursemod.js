@@ -13,7 +13,8 @@
 
     var holders = {
         presentation: undefined,
-        courseView: undefined
+        courseView: undefined,
+        coursemodIsShown: false
     };
 
     function loadStylesheet() {
@@ -41,14 +42,22 @@
         holders.courseView = courseView;
     }
 
-    function toggleCourseView() {
-        if(config.coursemod.shown){
+    function getSlideOverride(slide){
+        if (typeof slide.dataset.coursemodShown !== 'undefined'){
+            return slide.dataset.coursemodShown === 'true';
+        }
+        return undefined;
+    }
+
+    function toggleCourseView(show) {
+        if(!holders.coursemodIsShown && show){
             holders.presentation.classList.add('coursemod--active')
             holders.courseView.classList.add('coursemod--active')
-        }else {
+        }else if(holders.coursemodIsShown){
             holders.presentation.classList.remove('coursemod--active')
             holders.courseView.classList.remove('coursemod--active')
         }
+        holders.coursemodIsShown = show;
     }
 
     function updateNotes(currentSlide) {
@@ -69,17 +78,29 @@
     setup();
     updateNotes(Reveal.getCurrentSlide());
 
-    toggleCourseView();
+    var slideOverride = getSlideOverride(Reveal.getCurrentSlide());
+    if(typeof slideOverride === 'undefined'){
+        toggleCourseView(config.coursemod.shown);
+    }else{
+        toggleCourseView(slideOverride);
+    }
 
     Reveal.configure({
         keyboard: {
             67: function() {
                 config.coursemod.shown = !config.coursemod.shown;
-                toggleCourseView()
+                toggleCourseView(config.coursemod.shown)
             }
         }
     });
     Reveal.addEventListener( 'slidechanged', function( event ) {
-        updateNotes(event.currentSlide);
+        var currentSlide = event.currentSlide;
+        if (typeof currentSlide.dataset.coursemodShown !== 'undefined'){
+            var show = currentSlide.dataset.coursemodShown === 'true';
+            toggleCourseView(show);
+        }else {
+            toggleCourseView(config.coursemod.shown);
+        }
+        updateNotes(currentSlide);
     } );
 }).call(this);
