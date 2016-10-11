@@ -1,9 +1,15 @@
 (function () {
     'use strict';
+
     var config = Reveal.getConfig();
 
     if (config === null || typeof config.coursemod === 'undefined' || !config.coursemod.enabled)
         return;
+    
+    //disable when print-pdf is enabled
+    if (window.location.href.indexOf('print-pdf') > -1)
+        return;
+
 
     var holders = {
         presentation: undefined,
