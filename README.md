@@ -2,12 +2,12 @@
 Giving a presentation is great, but sometimes (or most of the times in my case) I also want to publish my presentation for my audience to review it later.
 By doing this a lot of the context might get lost (not everything you say in class is on the presentation), but not anymore!
 
-With this plugin you are able to start your presentation with the with the speaker notes next to it.
+With this plugin you are able to start your presentation with the speaker notes next to it.
 
 ![](coursemod.gif)
 
 ##Installation
-First of all download the code and place it in `plugin/coursemod`
+First of all download the `coursemod` folder (javascript and css) and place it in `plugin/`
 
 The second thing to do, is include it as a dependency in your initialization. And enable it.
 
