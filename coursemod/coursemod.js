@@ -13,8 +13,7 @@
 
     var holders = {
         presentation: undefined,
-        courseView: undefined,
-        coursemodIsShown: false
+        courseView: undefined
     };
 
     function loadStylesheet() {
@@ -50,14 +49,15 @@
     }
 
     function toggleCourseView(show) {
-        if(!holders.coursemodIsShown && show){
+        if(typeof show === 'undefined')
+            show = config.coursemod.shown;
+        if(show){
             holders.presentation.classList.add('coursemod--active')
             holders.courseView.classList.add('coursemod--active')
-        }else if(holders.coursemodIsShown){
+        }else{
             holders.presentation.classList.remove('coursemod--active')
             holders.courseView.classList.remove('coursemod--active')
         }
-        holders.coursemodIsShown = show;
     }
 
     function updateNotes(currentSlide) {
@@ -95,6 +95,7 @@
     });
     Reveal.addEventListener( 'slidechanged', function( event ) {
         var currentSlide = event.currentSlide;
+        console.log(currentSlide);
         if (typeof currentSlide.dataset.coursemodShown !== 'undefined'){
             var show = currentSlide.dataset.coursemodShown === 'true';
             toggleCourseView(show);
