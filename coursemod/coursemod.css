@@ -15,7 +15,7 @@
 .reveal.coursemod__presentation .audio-controls,
 .reveal.coursemod__presentation .recorder,
 .reveal.coursemod__presentation .slide-number {
-    position: absolute
+    position: absolute !important;
 }
 
 .coursemod__course-view {
