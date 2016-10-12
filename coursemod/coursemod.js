@@ -95,7 +95,6 @@
     });
     Reveal.addEventListener( 'slidechanged', function( event ) {
         var currentSlide = event.currentSlide;
-        console.log(currentSlide);
         if (typeof currentSlide.dataset.coursemodShown !== 'undefined'){
             var show = currentSlide.dataset.coursemodShown === 'true';
             toggleCourseView(show);
