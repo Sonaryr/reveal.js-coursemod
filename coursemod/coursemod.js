@@ -87,7 +87,7 @@
 
     Reveal.configure({
         keyboard: {
-            67: function() {
+            86: function() {
                 config.coursemod.shown = !config.coursemod.shown;
                 toggleCourseView(config.coursemod.shown)
             }
