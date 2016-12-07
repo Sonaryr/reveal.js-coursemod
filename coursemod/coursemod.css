@@ -21,12 +21,12 @@ reveal.coursemod__presentation {
 .coursemod__course-view {
     background-color: #f0f0f0;
     border-left: 2px solid lightgray;
-    font-family: "Helvetica", sans-serif;
-    line-height: 130%;
-    font-size: 16px;
     box-sizing: border-box;
     display: none;
+    font-family: "Helvetica", sans-serif;
+    font-size: 1em;
     height: 100%;
+    line-height: 1.3em;
     overflow-y: scroll;
     padding: 0 20px;
     position: fixed;
