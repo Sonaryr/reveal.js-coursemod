@@ -5,7 +5,7 @@
 
     if (config === null || typeof config.coursemod === 'undefined' || !config.coursemod.enabled)
         return;
-    
+
     //disable when print-pdf is enabled
     if (window.location.href.indexOf('print-pdf') > -1)
         return;
@@ -89,7 +89,8 @@
         keyboard: {
             86: function() {
                 config.coursemod.shown = !config.coursemod.shown;
-                toggleCourseView(config.coursemod.shown)
+                toggleCourseView(config.coursemod.shown);
+		Reveal.layout();
             }
         }
     });
