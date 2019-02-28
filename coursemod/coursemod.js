@@ -89,7 +89,8 @@
         keyboard: {
             86: function() {
                 config.coursemod.shown = !config.coursemod.shown;
-                toggleCourseView(config.coursemod.shown)
+                toggleCourseView(config.coursemod.shown);
+		Reveal.layout();
             }
         }
     });
