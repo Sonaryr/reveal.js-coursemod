@@ -5,7 +5,7 @@
 
     if (config === null || typeof config.coursemod === 'undefined' || !config.coursemod.enabled)
         return;
-    
+
     //disable when print-pdf is enabled
     if (window.location.href.indexOf('print-pdf') > -1)
         return;
@@ -93,6 +93,8 @@
             }
         }
     });
+    Reveal.registerKeyboardShortcut( 'V', 'Courseware view' );
+
     Reveal.addEventListener( 'slidechanged', function( event ) {
         var currentSlide = event.currentSlide;
         if (typeof currentSlide.dataset.coursemodShown !== 'undefined'){
